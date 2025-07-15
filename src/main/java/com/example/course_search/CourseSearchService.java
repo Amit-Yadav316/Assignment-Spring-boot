@@ -39,27 +39,31 @@ public class CourseSearchService {
 
         List<Criteria> criteriaList = new ArrayList<>();
 
-
         if (q != null && !q.isBlank()) {
             Criteria titleCriteria = new Criteria("title").matches(q);
             Criteria descCriteria = new Criteria("description").matches(q);
             criteriaList.add(titleCriteria.or(descCriteria));
         }
 
-        if (minAge != null || maxAge != null) {
-            Criteria ageCriteria = new Criteria("minAge");
-            if (minAge != null) ageCriteria = ageCriteria.greaterThanEqual(minAge);
-            if (maxAge != null) ageCriteria = ageCriteria.lessThanEqual(maxAge);
-            criteriaList.add(ageCriteria);
+        if (minAge != null && maxAge != null) {
+            criteriaList.add(new Criteria("minAge").lessThanEqual(maxAge)
+                              .and("maxAge").greaterThanEqual(minAge));
+        } else if (minAge != null) {
+            criteriaList.add(new Criteria("maxAge").greaterThanEqual(minAge));
+        } else if (maxAge != null) {
+            criteriaList.add(new Criteria("minAge").lessThanEqual(maxAge));
         }
 
         if (minPrice != null || maxPrice != null) {
             Criteria priceCriteria = new Criteria("price");
-            if (minPrice != null) priceCriteria = priceCriteria.greaterThanEqual(minPrice);
-            if (maxPrice != null) priceCriteria = priceCriteria.lessThanEqual(maxPrice);
+            if (minPrice != null) {
+                priceCriteria = priceCriteria.greaterThanEqual(minPrice);
+            }
+            if (maxPrice != null) {
+                priceCriteria = priceCriteria.and(new Criteria("price").lessThanEqual(maxPrice));
+            }
             criteriaList.add(priceCriteria);
         }
-
 
         if (category != null && !category.isBlank()) {
             criteriaList.add(new Criteria("category").is(category));
@@ -81,15 +85,16 @@ public class CourseSearchService {
         Pageable pageable = PageRequest.of(page, size);
 
         CriteriaQuery query = new CriteriaQuery(finalCriteria, pageable);
-
-        if (sort != null) {
-            Sort sortObj = switch (sort) {
-                case "priceAsc" -> Sort.by(Sort.Order.asc("price"));
-                case "priceDesc" -> Sort.by(Sort.Order.desc("price"));
-                default -> Sort.by(Sort.Order.asc("nextSessionDate"));
-            };
-            query.addSort(sortObj);
+        
+        Sort sortObj;
+        if ("priceAsc".equals(sort)) {
+            sortObj = Sort.by(Sort.Order.asc("price"));
+        } else if ("priceDesc".equals(sort)) {
+            sortObj = Sort.by(Sort.Order.desc("price"));
+        } else {
+            sortObj = Sort.by(Sort.Order.asc("nextSessionDate"));
         }
+        query.addSort(sortObj);
 
         SearchHits<CourseDocument> hits = elasticsearchOperations.search(query, CourseDocument.class);
         List<CourseDocument> courses = hits.stream().map(SearchHit::getContent).toList();
