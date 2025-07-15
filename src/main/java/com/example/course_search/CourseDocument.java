@@ -7,38 +7,52 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Represents a course document stored in Elasticsearch")
 @Document(indexName = "courses")
 public class CourseDocument {
 
     @Id
+    @Schema(description = "Unique course ID", example = "course_1")
     private String id;
 
-    @Field(type = FieldType.Text) 
+    @Field(type = FieldType.Text)
+    @Schema(description = "Course title", example = "Intro to Math Club")
     private String title;
 
-    @Field(type = FieldType.Text) 
+    @Field(type = FieldType.Text)
+    @Schema(description = "Course description", example = "This is a comprehensive course for students interested in math.")
     private String description;
 
-    @Field(type = FieldType.Keyword) 
+    @Field(type = FieldType.Keyword)
+    @Schema(description = "Category of the course", example = "Math")
     private String category;
 
-    @Field(type = FieldType.Keyword) 
+    @Field(type = FieldType.Keyword)
+    @Schema(description = "Type of course (CLUB, COURSE, ONE_TIME)", example = "CLUB")
     private String type;
 
-    @Field(type = FieldType.Keyword) 
+    @Field(type = FieldType.Keyword)
+    @Schema(description = "Grade range for which the course is suitable", example = "3rd–5th")
     private String gradeRange;
 
     @Field(type = FieldType.Integer)
+    @Schema(description = "Minimum age requirement", example = "7")
     private int minAge;
 
     @Field(type = FieldType.Integer)
+    @Schema(description = "Maximum age allowed", example = "11")
     private int maxAge;
 
     @Field(type = FieldType.Double)
+    @Schema(description = "Price of the course", example = "99.99")
     private double price;
 
     @Field(type = FieldType.Date)
+    @Schema(description = "Next session date in ISO format", example = "2025-08-20T15:48:17.156829Z")
     private Instant nextSessionDate;
+
 
     public CourseDocument() {}
 
