@@ -1,11 +1,11 @@
-# Use OpenJDK 17 base image
-FROM openjdk:17-jdk-slim
+# Use the official Eclipse Temurin JRE image
+FROM eclipse-temurin:17-jre-jammy
 
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy the built jar from the local target folder
+# Copy the built Spring Boot JAR into the container
 COPY target/course-search-0.0.1-SNAPSHOT.jar app.jar
 
-# Run the jar file
+# Run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
