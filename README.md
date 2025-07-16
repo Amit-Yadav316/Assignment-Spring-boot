@@ -73,7 +73,7 @@ A Spring Boot application that indexes and searches course documents using Elast
 
    4. Now click on "Try it Out"
 
-   ![WhatsApp Image 2025-07-16 at 16 13 37_baeb75dc](https://github.com/user-attachments/assets/f70b852e-328b-4df7-a7d3-a19a0aa99560)
+   <img width="1892" height="969" alt="image" src="https://github.com/user-attachments/assets/39d3a7fa-fd97-4d94-81d4-126947f702f5" />
 
 
    5. Fill Your Desired Field and Execute
