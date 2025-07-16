@@ -37,6 +37,3 @@ build/
 docker-compose.override.yml
 *.pid
 
-# Ignore all .jpg and .png files
-*.jpg
-*.png
