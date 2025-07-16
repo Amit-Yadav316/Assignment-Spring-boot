@@ -43,21 +43,25 @@ A Spring Boot application that indexes and searches course documents using Elast
 
    ```bash
    https://github.com/Amit-Yadav316/Assignment-Spring-boot.git
-   cd course-search
+   cd Assignment-Spring-boot
 
-2. **Start Elasticsearch and the Spring Boot application using Docker Compose:**
+2. **Build the Spring Boot JAR:**
    ```bash
-   docker-compose up -d
+   ./mvnw clean package 
+   
+3. **Start Elasticsearch and the Spring Boot application using Docker Compose:**
+   ```bash
+   docker-compose up --build -d
 
-3. **Verify Elasticsearch is running:**
+4. **Verify Elasticsearch is running:**
    [Open]http://localhost:9200
    You should see Elasticsearch cluster info JSON
 
-4. **Application Start**
+5. **Application Start**
    [Open]http://localhost:8080
    You should see Welcome Message
 
-5. **API Documentation**
+6. **API Documentation**
    1. Swagger UI is available to explore and test the REST endpoints:
    [Open]http://localhost:8080/swagger-ui.html
 
@@ -83,7 +87,7 @@ A Spring Boot application that indexes and searches course documents using Elast
 
 
 
-6. **Testing**
+7. **Testing**
    ```bash
    ./mvnw test
    
