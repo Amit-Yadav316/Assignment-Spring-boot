@@ -43,7 +43,6 @@ A Spring Boot application that indexes and searches course documents using Elast
 
    ```bash
    git clone https://github.com/<your-github-username>/course-search.git
-   # Replace <your-github-username> with your actual GitHub account name
    cd course-search
 
 2. **Start Elasticsearch and the Spring Boot application using Docker Compose:**
@@ -55,16 +54,31 @@ A Spring Boot application that indexes and searches course documents using Elast
    You should see Elasticsearch cluster info JSON
 
 4. **Application Start**
-   [Open](http://localhost:8080)
-
+   [Open]http://localhost:8080
+   You should see Welcome Message
 
 5. **API Documentation**
-   Swagger UI is available to explore and test the REST endpoints:
+   1. Swagger UI is available to explore and test the REST endpoints:
    [Open]http://localhost:8080/swagger-ui.html
+
+   2. You would see this page
+
+   ![alt text](image.png)
+
+   3. Click where I am pointing 
+
+   ![alt text](<WhatsApp Image 2025-07-16 at 16.09.42_25c1283d.jpg>)
+
+   4. Now click on "Try it Out"
+
+   ![alt text](<WhatsApp Image 2025-07-16 at 16.13.37_9e3df85c.jpg>)
+
+   5. Fill Your Desired Field and Execute
+
+   ![alt text](<WhatsApp Image 2025-07-16 at 16.16.22_cf4cfad2.jpg>)
+
 
 6. **Testing**
    ```bash
    ./mvnw test
-
-   
    
