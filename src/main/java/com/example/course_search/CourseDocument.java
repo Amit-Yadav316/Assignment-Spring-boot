@@ -7,6 +7,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Represents a course document stored in Elasticsearch")
@@ -28,10 +30,13 @@ public class CourseDocument {
     @Field(type = FieldType.Keyword)
     @Schema(description = "Category of the course", example = "Math")
     private String category;
-
-    @Field(type = FieldType.Keyword)
-    @Schema(description = "Type of course (CLUB, COURSE, ONE_TIME)", example = "CLUB")
-    private String type;
+    
+    // The 'mode' field is mapped to the JSON property 'type' to maintain compatibility with existing API contracts
+    // where the property is named 'type', even though the internal field name is 'mode' for clarity.
+        @JsonProperty("type")
+        @Field(type = FieldType.Keyword)
+        @Schema(description = "Type of course (CLUB, COURSE, ONE_TIME)", example = "CLUB")
+        private String mode;
 
     @Field(type = FieldType.Keyword)
     @Schema(description = "Grade range for which the course is suitable", example = "3rd–5th")
@@ -56,13 +61,13 @@ public class CourseDocument {
 
     public CourseDocument() {}
 
-    public CourseDocument(String id, String title, String description, String category, String type, String gradeRange,
+    public CourseDocument(String id, String title, String description, String category, String mode, String gradeRange,
                           int minAge, int maxAge, double price, Instant nextSessionDate) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.category = category;
-        this.type = type;
+        this.mode = mode;
         this.gradeRange = gradeRange;
         this.minAge = minAge;
         this.maxAge = maxAge;
@@ -82,8 +87,8 @@ public class CourseDocument {
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public String getMode() { return mode; }
+    public void setMode(String mode) { this.mode = mode; }
 
     public String getGradeRange() { return gradeRange; }
     public void setGradeRange(String gradeRange) { this.gradeRange = gradeRange; }
@@ -99,4 +104,20 @@ public class CourseDocument {
 
     public Instant getNextSessionDate() { return nextSessionDate; }
     public void setNextSessionDate(Instant nextSessionDate) { this.nextSessionDate = nextSessionDate; }
+
+    @Override
+    public String toString() {
+        return "CourseDocument{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", mode='" + mode + '\'' +
+                ", gradeRange='" + gradeRange + '\'' +
+                ", minAge=" + minAge +
+                ", maxAge=" + maxAge +
+                ", price=" + price +
+                ", nextSessionDate=" + nextSessionDate +
+                '}';
+    }
 }
