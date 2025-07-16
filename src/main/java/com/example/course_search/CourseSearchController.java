@@ -50,8 +50,8 @@ public class CourseSearchController {
             @Parameter(description = "Course category") 
             @RequestParam(required = false) String category,
 
-            @Parameter(description = "Course type (CLUB, COURSE, ONE_TIME)") 
-            @RequestParam(required = false) String type,
+            @Parameter(description = "Course mode (CLUB, COURSE, ONE_TIME)") 
+            @RequestParam(required = false) String mode,
 
             @Parameter(description = "Start date in ISO format") 
             @RequestParam(required = false)
@@ -67,7 +67,7 @@ public class CourseSearchController {
             @RequestParam(defaultValue = "10") int size
     ) {
         CourseSearchService.SearchResult result = courseSearchService.searchCourses(
-                q, minAge, maxAge, minPrice, maxPrice, category, type, startDate, sort, page, size
+                q, minAge, maxAge, minPrice, maxPrice, category, mode, startDate, sort, page, size
         );
 
         return Map.of(
