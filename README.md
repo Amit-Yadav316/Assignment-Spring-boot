@@ -47,7 +47,7 @@ A Spring Boot application that indexes and searches course documents using Elast
 
 2. **Build the Spring Boot JAR:**
    ```bash
-   ./mvnw clean package 
+   ./mvnw clean package -DskipTests
    
 3. **Start Elasticsearch and the Spring Boot application using Docker Compose:**
    ```bash
