@@ -42,7 +42,7 @@ A Spring Boot application that indexes and searches course documents using Elast
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/<your-github-username>/course-search.git
+   https://github.com/Amit-Yadav316/Assignment-Spring-boot.git
    cd course-search
 
 2. **Start Elasticsearch and the Spring Boot application using Docker Compose:**
