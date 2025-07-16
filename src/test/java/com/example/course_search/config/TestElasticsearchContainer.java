@@ -1,4 +1,4 @@
-package com.example.course_search;
+package com.example.course_search.config;
 
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.utility.DockerImageName;

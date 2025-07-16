@@ -1,4 +1,4 @@
-package com.example.course_search;
+package com.example.course_search.service;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -14,6 +14,8 @@ import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.stereotype.Service;
+
+import com.example.course_search.model.CourseDocument;
 
 @Service
 public class CourseSearchService {

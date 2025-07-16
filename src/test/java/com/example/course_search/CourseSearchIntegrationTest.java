@@ -21,6 +21,11 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import com.example.course_search.config.TestElasticsearchContainer;
+import com.example.course_search.loader.SampleCourseLoader;
+import com.example.course_search.model.CourseDocument;
+import com.example.course_search.repository.CourseRepository;
+
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")

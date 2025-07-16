@@ -1,4 +1,4 @@
-package com.example.course_search;
+package com.example.course_search.loader;
 
 import java.io.InputStream;
 import java.util.List;
@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import com.example.course_search.model.CourseDocument;
+import com.example.course_search.repository.CourseRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

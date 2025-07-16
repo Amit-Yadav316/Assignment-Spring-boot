@@ -1,4 +1,4 @@
-package com.example.course_search;
+package com.example.course_search.model;
 
 import java.time.Instant;
 
