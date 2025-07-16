@@ -11,7 +11,7 @@ public interface CourseRepository extends ElasticsearchRepository<CourseDocument
   
     List<CourseDocument> findByCategory(String category);
 
-    List<CourseDocument> findByType(String type);
+    List<CourseDocument> findByMode(String mode);
 
     List<CourseDocument> findByNextSessionDateAfter(Instant date);
 }
