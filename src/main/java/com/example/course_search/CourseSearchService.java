@@ -31,7 +31,7 @@ public class CourseSearchService {
                                       Double minPrice,
                                       Double maxPrice,
                                       String category,
-                                      String type,
+                                      String mode,
                                       Instant startDate,
                                       String sort,
                                       int page,
@@ -69,8 +69,8 @@ public class CourseSearchService {
             criteriaList.add(new Criteria("category").is(category));
         }
 
-        if (type != null && !type.isBlank()) {
-            criteriaList.add(new Criteria("type").is(type));
+        if (mode != null && !mode.isBlank()) {
+            criteriaList.add(new Criteria("mode").is(mode));
         }
 
         if (startDate != null) {
